@@ -43,7 +43,7 @@
         return `0 0 ${x/5}px`+(x<25?"":`, ${Level(x-25)}`);
       }
       function Abbreviations(x) {
-        return ["","k","M","G","T","P","E","Z","Y","R","Q"][x];
+        return ["","k","M","G","T","P","E","Z","Y","R"][x%10]+["","Q","A","H","KY","PJ","S","PC","N","ZT"][(x/10)%10|0];
       }
       function AbbreviationColor(x) {
         return `<span style="color:hsl(${(x-1)*36},${(x-1)*10}%,50%); text-shadow: ${Level(x-1)}">${Abbreviations(x)}</span>`;
@@ -57,8 +57,9 @@
         }
       }
       function SIPrefixNames(x) {
-        let names = ["N/A","kilo","mega","giga","tera","peta","exa","zetta","yotta","ronna","quetta"];
-        return names[x|0];
+        let names = ["","kilo","mega","giga","tera","peta","exa","zetta","yotta","ronna"];
+        let names2 = ["","quetta","amosa","hapra","kyra","pija","sagana","pectra","nisaba","zotza"];
+        return names[x%10|0]+names2[(x/10)%10|0];
       }
       function formatTime(x) {
         let x2 = x%86400;
